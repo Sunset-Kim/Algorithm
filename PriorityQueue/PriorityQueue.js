@@ -17,7 +17,7 @@ class PriorityQueue {
     let currentIndex = this.queue.length - 1;
 
     while (currentIndex > 0) {
-      const parentIndex = parseInt((currentIndex - 1) / 2);
+      const parentIndex = Math.floor((currentIndex - 1) / 2);
       const parentNode = this.queue[parentIndex];
       const currentNode = this.queue[currentIndex];
       let swap = false;
@@ -61,7 +61,10 @@ class PriorityQueue {
 
       if (rightIndex < length) {
         rightNode = this.queue[rightIndex];
-        if ((!swap && currentNode.priority > rightNode.priority) || (swap && leftNode.priority > rightNode.priority)) {
+        if (
+          (!swap && currentNode.priority > rightNode.priority) || //
+          (swap && leftNode.priority > rightNode.priority)
+        ) {
           swap = rightIndex;
         }
       }
