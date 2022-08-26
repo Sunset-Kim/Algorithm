@@ -29,19 +29,73 @@ class PriorityQueue {
         swap = true;
       }
 
-      if (!swap) return this.quque;
+      if (!swap) return this.queue;
     }
 
     return this.queue;
   }
+
+  dequeue() {
+    const max = this.queue[0];
+    const newRoot = this.queue.pop();
+    if (this.queue.length === 0) return;
+
+    this.queue[0] = newRoot;
+
+    let currentIndex = 0;
+    const length = this.queue.length;
+    const currentNode = this.queue[currentIndex];
+
+    while (true) {
+      let leftIndex = 2 * currentIndex + 1;
+      let rightIndex = 2 * currentIndex + 2;
+      let leftNode, rightNode;
+      let swap = false;
+
+      if (leftIndex < length) {
+        leftNode = this.queue[leftIndex];
+        if (currentNode.priority > leftNode.priority) {
+          swap = leftIndex;
+        }
+      }
+
+      if (rightIndex < length) {
+        rightNode = this.queue[rightIndex];
+        if ((!swap && currentNode.priority > rightNode.priority) || (swap && leftNode.priority > rightNode.priority)) {
+          swap = rightIndex;
+        }
+      }
+
+      if (!swap) return;
+
+      this.queue[currentIndex] = this.queue[swap];
+      this.queue[swap] = currentNode;
+      currentIndex = swap;
+    }
+
+    return max;
+  }
 }
 
+// test
 const priorityQueue = new PriorityQueue();
 
-console.log(priorityQueue.enqueue(10, 1));
-console.log(priorityQueue.enqueue(8, 1));
-console.log(priorityQueue.enqueue(6, 1));
-console.log(priorityQueue.enqueue(7, 1));
-console.log(priorityQueue.enqueue(5, 1));
-console.log(priorityQueue.enqueue(3, 1));
-console.log(priorityQueue.enqueue(1, 1));
+priorityQueue.enqueue(10, 1);
+priorityQueue.enqueue(8, 1);
+priorityQueue.enqueue(6, 1);
+priorityQueue.enqueue(7, 1);
+priorityQueue.enqueue(5, 1);
+priorityQueue.enqueue(3, 1);
+priorityQueue.enqueue(1, 1);
+
+console.log(priorityQueue.queue);
+
+priorityQueue.dequeue();
+priorityQueue.dequeue();
+priorityQueue.dequeue();
+priorityQueue.dequeue();
+priorityQueue.dequeue();
+priorityQueue.dequeue();
+priorityQueue.dequeue();
+
+console.log(priorityQueue.queue);
