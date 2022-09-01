@@ -120,3 +120,13 @@ Node + Connections
 |                                                   | 간선을 순회하는 반복이 더 빠름   |
 | 특정간선이 존재하는 것을 알려고 할 경우           |                                  |
 | 공간소모가 큼                                     | 공간소모가 작음                  |
+
+## Graph Traversal uses
+
+- peer to peer networking
+- web crawlers
+- Finding "closet" matches/recommendations
+- shortest path problems
+  - GPS Navigation
+  - Solving mazes
+  - AI

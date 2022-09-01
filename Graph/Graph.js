@@ -48,22 +48,83 @@ class Graph {
 
     delete this.adjacencyList[key];
   }
+
+  /**
+   * Graph DFS
+   * 1. 재귀
+   * 2. 순환
+   */
+
+  /**
+   * input : start node
+   * result list
+   * visited vertices object
+   *
+   * create helper
+   * helper early retrun vertex is empty
+   *
+   * @param {*} vertex 처음방문하는 node
+   */
+  DFS(start) {
+    const result = [];
+    const visited = {};
+    const adjacencyList = this.adjacencyList;
+
+    helper(start);
+
+    function helper(vertex) {
+      if (!vertex) return null;
+      visited[vertex] = true;
+      result.push(vertex);
+      adjacencyList[vertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          return helper(neighbor);
+        }
+      });
+    }
+
+    return result;
+  }
+
+  DFS_while(start) {
+    const result = [];
+    const visited = {};
+    const stack = [];
+
+    stack.push(start);
+    visited[start] = true;
+    let currentVertex = stack.pop();
+    while (stack.length > 0) {
+      currentVertex = stack.pop();
+      result.push(currentVertex);
+
+      this.adjacencyList(currentVertex).forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          stack.push(neighbor);
+        }
+      });
+    }
+
+    return result;
+  }
 }
 
 const g = new Graph();
 
-g.addVertex("Dallas");
-g.addVertex("Tokyo");
-g.addVertex("Aspen");
-g.addVertex("Los Angeles");
-g.addVertex("Hong Kong");
-g.addEdge("Dallas", "Tokyo");
-g.addEdge("Dallas", "Aspen");
-g.addEdge("Hong Kong", "Tokyo");
-g.addEdge("Hong Kong", "Dallas");
-g.addEdge("Los Angeles", "Hong Kong");
-g.addEdge("Los Angeles", "Aspen");
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
 
-g.removeVertex("Hong Kong");
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
 
-console.log(g);
+console.log(g.DFS("A"));
