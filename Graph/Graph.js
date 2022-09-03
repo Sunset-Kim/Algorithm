@@ -108,6 +108,35 @@ class Graph {
 
     return result;
   }
+
+  /**
+   * input : start
+   * 1. queue를 이용
+   * 2.
+   */
+
+  bfs(start) {
+    const queue = [];
+    const result = [];
+    queue.push(start);
+    const visited = {};
+
+    let currentVertex;
+
+    while (queue.length) {
+      currentVertex = queue.shift();
+
+      result.push(currentVertex);
+
+      this.adjacencyList[currentVertex].forEach((neighbor) => {
+        if (!visited[neighbor]) {
+          visited[neighbor] = true;
+          queue.push(neighbor);
+        }
+      });
+    }
+    return result;
+  }
 }
 
 const g = new Graph();
@@ -127,4 +156,4 @@ g.addEdge("D", "E");
 g.addEdge("D", "F");
 g.addEdge("E", "F");
 
-console.log(g.DFS("A"));
+console.log(g.bfs("A"));
