@@ -130,3 +130,8 @@ Node + Connections
   - GPS Navigation
   - Solving mazes
   - AI
+
+# Dijkstra's Algorithm
+
+- 우선순위 큐
+- 가중 그래프
