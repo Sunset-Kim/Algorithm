@@ -69,7 +69,7 @@ class PriorityQueue {
         }
       }
 
-      if (!swap) return;
+      if (!swap) break;
 
       this.queue[currentIndex] = this.queue[swap];
       this.queue[swap] = currentNode;
