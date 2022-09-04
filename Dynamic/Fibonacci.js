@@ -1,9 +1,9 @@
-function fibonacci(nth) {
-  if (nth < 2) {
-    return 1;
-  } else {
-    return fibonacci(nth - 1) + fibonacci(nth - 2);
-  }
-}
+function fibonacci(nth, memo = []) {
+  if (memo[nth] !== undefined) return memo[nth];
 
-console.log(fibonacci(9));
+  if (nth <= 2) return 1;
+
+  const result = fibonacci(nth - 1, memo) + fibonacci(nth - 2, memo);
+  memo[nth] = result;
+  return result;
+}
