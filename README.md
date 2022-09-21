@@ -1,4 +1,13 @@
-# Tree 시작하며...
+# Algorithm
+
+## 문제해결 패턴
+
+- Frequency counter : 빈도수를 기록해 문제를 해결 ex) anagram
+- Two Pointer: **정렬된 배열** 에서 두개의 포인터가 배열을 진행하면서 문제를 해결
+
+# 자료구조
+
+## Tree
 
 > Tree > BiraryTree > Heap > BiraryHeap
 
@@ -7,8 +16,6 @@
 - 이진힙은 최대힙, 최소힙으로 다시 나뉜다.
 - 트리는 한쪽으로 치우친 구조가 나올수 있지만 힙은 한쪽으로 몰린 트리구조는 볼 수 없다.
 - 힙은 array로 표현이 가능하다. 보이는 구조를 평면화 하면 된다.
-
-## Tree
 
 ## Binary Heap
 
@@ -32,9 +39,9 @@
 - 데이터 모음인데 각각의 우선순위가 있는 데이터 모음집
 - 우선순위큐는 힙과는 별개
 
-# HashTable
+## HashTable
 
-## Objectives
+### Objectives
 
 > 1. 해시테이블은 무엇인가
 > 2. 해시 알고리즘은 무엇인가
@@ -73,13 +80,13 @@
 - 직선탐색법 : 각 자리에 하나만 데이터를 저장하며, 이에따라 해시 인덱스가 충돌시 그 앞을 보게 된다
 - 개별체이닝 : 각 자리에 여러개의 데이터를 저장하며, 이에따라 해시 인덱스가 충돌하면 중첩해서 담는다
 
-# Graph
+## Graph
 
 ---
 
 > 모든 SNS에 쓰임 (추천사용자, 추천영화)
 
-## Objectives
+### Objectives
 
 - 그래프가 뭔지 설명한다
 - 그래프의 종류를 비교하고 실제로 use cases를 살펴본다
@@ -94,20 +101,20 @@ Node + Connections
 트리도 그래프의 일종인데, 트리는 단지 부모(시작점)이 존재한다.
 그래프는 부모노드가 존재하지 않고 각 노드는 똑같이 취급되며 서로 다른 방식으로 연결된다.
 
-## Uses for Graphs
+### Uses for Graphs
 
 - SNS
 - Location/Mapping
 - Routing Algorithms
 
-## Type of Graphs
+### Type of Graphs
 
 - vertex : a node (꼭지점)
 - Edge : connection betwwen nodes (간선)
 - Weighted/Unweighted : 가중 / 비가중
 - Directed/Undirected : 방향 / 무방향
 
-## Graph에서 간선 즉, 정점사이의 관계를 표현하는 방법
+### Graph에서 간선 즉, 정점사이의 관계를 표현하는 방법
 
 1. 인접행렬
 2. 인접리스트
@@ -121,7 +128,7 @@ Node + Connections
 | 특정간선이 존재하는 것을 알려고 할 경우           |                                  |
 | 공간소모가 큼                                     | 공간소모가 작음                  |
 
-## Graph Traversal uses
+### Graph Traversal uses
 
 - peer to peer networking
 - web crawlers
@@ -131,7 +138,7 @@ Node + Connections
   - Solving mazes
   - AI
 
-# Dijkstra's Algorithm
+## Dijkstra's Algorithm
 
 - 우선순위 큐
 - 가중 그래프
